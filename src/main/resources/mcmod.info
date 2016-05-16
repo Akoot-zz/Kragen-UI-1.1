@@ -1,0 +1,16 @@
+[
+{
+  "modid": "kragenui",
+  "name": "Kragen UI",
+  "description": "Minecraft User Interface mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://google.com",
+  "updateUrl": "",
+  "authorList": ["Akoot"],
+  "credits": "The Forge and FML guys, for making Forge",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
