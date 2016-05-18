@@ -18,13 +18,16 @@ public class DrawMainMenu extends GuiElement
 	@Override
 	public void render()
 	{
-		drawBackground();
+		//drawBackground();
 		drawPlayerInfo(5, 5, fr.getStringWidth(Refrence.MOD_FULL_NAME) + 32, 24);
 		drawButtons();
 	}
+	
+	double lastInfo;
 
 	public void drawPlayerInfo(int x, int y, int width, int height)
 	{
+		lastInfo = animateSmooth(width, lastInfo, 3);
 		drawRect(x, y, x + width, y + height, Colors.getColor(0.5, 0x000000));
 		fr.drawStringWithShadow("§a" + mc.getSession().getUsername(), x + height + 2, y + 2, 0xffffffff);
 		fr.drawStringWithShadow(Refrence.MOD_FULL_NAME, x + height + 2, y + 12, 0xffffffff);
