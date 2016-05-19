@@ -1,5 +1,11 @@
 package com.Akoot.kragenui.modules;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import com.Akoot.kragenui.Refrence;
 import com.Akoot.kragenui.gui.GuiElement;
 import com.Akoot.kragenui.util.Colors;
@@ -28,16 +34,19 @@ public class DrawMainMenu extends GuiElement
 	public void drawPlayerInfo(int x, int y, int width, int height)
 	{
 		lastInfo = animateSmooth(width, lastInfo, 3);
-		drawRect(x, y, x + width, y + height, Colors.getColor(0.5, 0x000000));
-		fr.drawStringWithShadow("§a" + mc.getSession().getUsername(), x + height + 2, y + 2, 0xffffffff);
-		fr.drawStringWithShadow(Refrence.MOD_FULL_NAME, x + height + 2, y + 12, 0xffffffff);
+		drawRectSmooth(x, y, x + lastInfo, y + height, Colors.getColor(0.3, 0x000000));
+		fr.drawStringWithShadow(mc.getSession().getUsername(), x + height + 2, y + 2, 0xffe4e4e4);
+		fr.drawStringWithShadow(Refrence.MOD_FULL_NAME, x + height + 2, y + 12, 0xff61e8d7);
 		fixColor();
 		drawPlayerHead(x + 2, y + 2, height - 4, getUsername());
 	}
 
 	public void drawBackground()
 	{
-		double ratio = 1.8;
+		ResourceLocation img = new ResourceLocation(Refrence.MOD_ID, Configs.getConfig().getString("background"));
+		int w = 1920;
+		int h = 1080;		
+		double ratio = w / h;
 		int width = (int) (getHeight() * ratio);
 		int height = getHeight();
 
@@ -47,7 +56,7 @@ public class DrawMainMenu extends GuiElement
 			height = (int) (getWidth() / ratio);
 		}
 		
-		mc.getTextureManager().bindTexture(new ResourceLocation(Refrence.MOD_ID, Configs.getConfig().getString("background")));
+		mc.getTextureManager().bindTexture(img);
 		this.drawModalRectWithCustomSizedTexture(0, 0, width, height, width, height, width, height);
 	}
 
